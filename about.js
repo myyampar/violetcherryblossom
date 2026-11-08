@@ -17,9 +17,9 @@ Violet Cherry Blossom is where it all comes together: a novel in progress, perso
   ],
   quote: `Chilar jeevichathinte alavu varshangal kondu alla alakkunnath... avar chodhicha chodyangal kondu, avar snehicha manushyar kondu, avar baakki vecha ormakal kondu aanu.`,
   facts: [
-    { label: "Writes in",         value: "YOUR_LANGUAGES" },
-    { label: "Currently writing", value: "YOUR_NOVEL_NAME" },
+    { label: "Writes in",         value: "Malayalam" },
+    { label: "Currently writing", value: "The night we met" },
     { label: "Loves",             value: "YOUR_FAVOURITE_THINGS" },
-    { label: "Based in",          value: "YOUR_CITY_OR_STATE" }
+    { label: "Based in",          value: "Kochi" }
   ]
 };
