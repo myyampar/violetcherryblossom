@@ -110,7 +110,7 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
 /* ---- Album & Lightbox CSS (Updated to Collage Style) ---- */
 #g-album { 
     display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* മൊബൈലിൽ 2-3 എണ്ണം വരാൻ */
     gap: 10px; 
     padding: 10px 0;
 }
@@ -306,15 +306,13 @@ body.modal-open .back-to-top {
       <section class="panel about" id="about" style="display: flex; flex-direction: column; justify-content: center;">
         <h2>About Me & This Space</h2>
         
-        <div style="font-size: 24px; font-family: 'Playfair Display', serif; color: var(--violet); font-weight: 600; letter-spacing: 1px; margin-bottom: 10px;">
-            myy_ampar
-        </div>
+        <!-- 'myy_ampar' എന്ന ഹെഡിംഗ് ഇവിടെ നിന്ന് ഒഴിവാക്കി -->
 
-        <p style="font-size: 14px; color: var(--soft); margin-bottom: 10px;">
+        <p style="font-size: 15px; color: var(--soft); margin-bottom: 12px;">
             <strong>ഹായ്, ഞാൻ myy_ampar.</strong> ഒരു സ്വപ്നം കാണുന്നവനും, എഴുത്തുകാരനും, ഒപ്പം ഈ ലോകത്തിലെ ചെറിയ കാര്യങ്ങളിൽ അത്ഭുതം കാണുന്നവനുമാണ്.
         </p>
 
-        <p style="font-size: 14px; color: var(--soft); margin-bottom: 15px;">
+        <p style="font-size: 15px; color: var(--soft); margin-bottom: 15px;">
             ഈ വെബ്സൈറ്റ് എന്റെ ഒരു ഡയറി പോലെയാണ്. ഇവിടെ ഞാൻ എന്റെ നോവൽ ചാപ്റ്ററുകൾ, ഓർമ്മകൾ, യാത്രകളിൽ കണ്ടുമുട്ടിയ ആളുകൾ, ഒപ്പം എന്റെ ഉള്ളിലെ ചിന്തകൾ എന്നിവ പങ്കുവെക്കുന്നു.
         </p>
 
@@ -334,7 +332,7 @@ body.modal-open .back-to-top {
     <section class="panel" id="albums" style="margin-top:20px">
         <h2>Photo Albums</h2>
         <!-- 'grid' എന്ന ക്ലാസ് നൽകിയാൽ ചിത്രങ്ങൾ കൃത്യമായി അടുക്കിവരും -->
-        <div id="g-album" class="grid"></div> 
+        <div id="g-album"></div> 
     </section>
 
     <section class="panel" id="contact" hidden><h2>Let’s Connect</h2><p style="margin:0 0 18px;color:var(--soft);line-height:1.8">Find me here, or write to me anytime.</p><div class="links" id="links"></div></section>
