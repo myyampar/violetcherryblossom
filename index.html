@@ -220,7 +220,11 @@ $("navLinks").onclick=()=>$("navLinks").classList.remove("open");
 function card(p){
   const img=p.images&&p.images[0]?`<img loading="lazy" src="${esc(p.images[0])}" alt="">`:`<div class="ph">${TYPES[p.type].i}</div>`;
   const extra=p.type==="album"?`${(p.images||[]).length} photos`:(p.file?"chapter":read(p.body)+" min read");
-  return `<div class="card" data-id="${esc(p.id)}">${img}<div class="b"><span class="pill">${TYPES[p.type].n}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary||(p.file?"Open to read this chapter":(p.body||"").slice(0,110)+((p.body||"").length>110?"…":"")))}</p><div class="meta">${fmt(p.created)} · ${extra}</div></div></div>`;
+  
+  // പുതിയ മാറ്റം: displayTitle ഉണ്ടെങ്കിൽ അത് എടുക്കും, ഇല്ലെങ്കിൽ പഴയത് പോലെ കാണിക്കും
+  const pillText = p.displayTitle ? p.displayTitle : TYPES[p.type].n;
+
+  return `<div class="card" data-id="${esc(p.id)}">${img}<div class="b"><span class="pill">${esc(pillText)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary||(p.file?"Open to read this chapter":(p.body||"").slice(0,110)+((p.body||"").length>110?"…":"")))}</p><div class="meta">${fmt(p.created)} · ${extra}</div></div></div>`;
 }
 
 function render(){
