@@ -8,8 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-    body.modal-open .back-to-top {
-    display: none !important;
 :root{--violet:#54258a;--deep:#25113f;--paper:#fffaff;--ink:#29163e;--muted:#705d7d;--line:#e4d1f0;--bg:#f4eafa;--card:rgba(255,250,255,.96);--shadow:0 12px 35px rgba(54,24,83,.12);--hdr:rgba(255,245,255,.9);--soft:#574365;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--violet:#c9a2f0;--deep:#150a26;--paper:#241538;--ink:#f1e6fa;--muted:#b9a5c9;--line:#43295f;--bg:#1a0d2b;--card:rgba(36,21,56,.96);--hdr:rgba(36,21,56,.9);--soft:#cdbbdc}}
 :root[data-theme="dark"]{color-scheme:dark;--violet:#c9a2f0;--deep:#150a26;--paper:#241538;--ink:#f1e6fa;--muted:#b9a5c9;--line:#43295f;--bg:#1a0d2b;--card:rgba(36,21,56,.96);--hdr:rgba(36,21,56,.9);--soft:#cdbbdc}
@@ -140,7 +138,7 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
 
 /* ---- Modal Back to Top Button ---- */
 .modal-top-btn {
-    position: absolute; /* ഇവിടെയാണ് fixed-ന് പകരം absolute നൽകേണ്ടത് */
+    position: absolute;
     bottom: 20px;
     right: 20px;
     background: var(--violet);
@@ -165,9 +163,10 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
     transform: scale(1.1);
     background: #7a3fb8;
 }
-.modal-top-btn:hover {
-    transform: scale(1.1);
-    background: #7a3fb8;
+
+/* ചാപ്റ്റർ തുറക്കുമ്പോൾ ഹോം പേജിലെ ബട്ടൺ മറയ്ക്കാൻ */
+body.modal-open .back-to-top {
+    display: none !important;
 }
 </style>
 </head>
@@ -292,7 +291,10 @@ function render(){
 
 document.addEventListener("click",e=>{
   const c=e.target.closest(".card");if(c)open(c.dataset.id);
-  if(e.target===$("modal")||e.target.classList.contains("close"))$("modal").classList.remove("open");
+  if(e.target===$("modal")||e.target.classList.contains("close")) {
+      $("modal").classList.remove("open");
+      document.body.classList.remove("modal-open"); // ചാപ്റ്റർ അടയ്ക്കുമ്പോൾ ഹോം ബട്ടൺ തിരികെ കൊണ്ടുവരാൻ
+  }
 });
 
 function open(id){
@@ -302,8 +304,9 @@ function open(id){
 
   $("sheet").innerHTML=`<button class="close" aria-label="Close">×</button><span class="pill">${esc(pillText)}</span><h2 style="margin-top:12px">${esc(p.title)}</h2><div class="meta" style="margin:-8px 0 16px">${fmt(p.created)}</div><div class="body" id="bd">${p.file?"Loading…":esc(p.body)}</div><div class="photos">${(p.images||[]).map(u=>`<img loading="lazy" src="${esc(u)}" alt="">`).join("")}</div>${shareBtn}${canEdit?`<button class="del" data-del="${esc(p.id)}">Delete this</button>`:""}
   <button class="modal-top-btn" id="modalTopBtn" onclick="document.getElementById('modal').scrollTo({top: 0, behavior: 'smooth'}); document.getElementById('sheet').scrollTo({top: 0, behavior: 'smooth'});" title="Go to top">↑</button>`;
+  
   $("modal").classList.add("open");
-  document.body.classList.add("modal-open");
+  document.body.classList.add("modal-open"); // ചാപ്റ്റർ തുറക്കുമ്പോൾ ഹോം ബട്ടൺ മറയ്ക്കാൻ
   
   // Reset scroll position on modal open
   $("modal").scrollTop = 0;
@@ -337,7 +340,7 @@ function sharePost(title) {
 
 $("sheet").addEventListener("click",async e=>{
   const id=e.target.dataset&&e.target.dataset.del;if(!id||!confirm("Delete this permanently?"))return;
-  try{await db.collection("posts").doc(id).delete();$("modal").classList.remove("open")}catch(err){alert("Could not delete: "+(err.message||err.code))}
+  try{await db.collection("posts").doc(id).delete();$("modal").classList.remove("open");document.body.classList.remove("modal-open");}catch(err){alert("Could not delete: "+(err.message||err.code))}
 });
 
 function tabs(){
@@ -439,7 +442,6 @@ window.addEventListener("scroll", () => {
 document.getElementById('modal').addEventListener('scroll', function() {
     const topBtn = document.getElementById('modalTopBtn');
     if (topBtn) {
-        // 150 പിക്സൽ താഴേക്ക് സ്ക്രോൾ ചെയ്താൽ ബട്ടൺ കാണിക്കും
         if (this.scrollTop > 150) {
             topBtn.style.opacity = "1";
             topBtn.style.pointerEvents = "auto";
