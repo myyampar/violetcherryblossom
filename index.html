@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Violet Cherry Blossom | MYYAMPR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--violet:#54258a;--deep:#25113f;--paper:#fffaff;--ink:#29163e;--muted:#705d7d;--line:#e4d1f0;--bg:#f4eafa;--card:rgba(255,250,255,.96);--shadow:0 12px 35px rgba(54,24,83,.12);--hdr:rgba(255,245,255,.9);--soft:#574365;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--violet:#c9a2f0;--deep:#150a26;--paper:#241538;--ink:#f1e6fa;--muted:#b9a5c9;--line:#43295f;--bg:#1a0d2b;--card:rgba(36,21,56,.96);--hdr:rgba(36,21,56,.9);--soft:#cdbbdc}}
+:root[data-theme="dark"]{color-scheme:dark;--violet:#c9a2f0;--deep:#150a26;--paper:#241538;--ink:#f1e6fa;--muted:#b9a5c9;--line:#43295f;--bg:#1a0d2b;--card:rgba(36,21,56,.96);--hdr:rgba(36,21,56,.9);--soft:#cdbbdc}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;color:var(--ink);background:var(--bg);font-family:"DM Sans",sans-serif}
+a{color:inherit;text-decoration:none}
+.site-header{position:absolute;z-index:5;top:18px;left:4%;width:92%;min-height:68px;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid rgba(255,255,255,.4);border-radius:18px;background:var(--hdr);backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+.brand{display:flex;align-items:center;gap:11px}.brand-flower{font-size:32px;color:var(--violet)}
+.brand-name{display:block;font:700 19px "Playfair Display",serif;color:var(--violet)}
+.brand-tag{display:block;margin-top:2px;font-size:10px;letter-spacing:3px;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:22px;font-size:13px}.nav-links a:hover{color:#8c4bc0}
+.menu-button{display:none;border:0;background:none;font-size:26px;color:var(--violet)}
+.hero{min-height:560px;padding:190px 8% 90px;display:flex;align-items:center;color:#fff;background:linear-gradient(90deg,rgba(30,12,57,.72),rgba(48,17,75,.15)),url("blossom.jpg") center/cover no-repeat,linear-gradient(110deg,#1e0c39,#54258a 60%,#c18acb)}
+.hero-content{max-width:760px}.eyebrow{margin:0 0 12px;font:italic 24px "Playfair Display",serif}
+h1{margin:0;font:600 clamp(42px,6vw,76px)/1.08 "Playfair Display",serif;text-wrap:balance}
+.hero-subtitle{margin:18px 0 28px;font:italic clamp(18px,2.3vw,25px) "Playfair Display",serif}
+.button{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;border:1px solid rgba(255,255,255,.9);border-radius:30px;color:#fff;font:600 14px "DM Sans",sans-serif;background:none;cursor:pointer;transition:.2s}
+.button:hover{background:#fff;color:#54258a;transform:translateY(-2px)}
+.solid{background:#54258a;color:#fff;border-color:#54258a}.solid:hover{background:#7a3fb8;color:#fff}
+.wrap{width:min(1180px,90%);margin:-28px auto 60px;position:relative}
+.panel{border:1px solid var(--line);border-radius:20px;background:var(--card);box-shadow:var(--shadow);padding:25px;margin-bottom:20px}
+.row{display:grid;grid-template-columns:1.45fr 1fr;gap:20px}.row .panel{margin:0}
+h2{margin:0 0 18px;font:600 25px "Playfair Display",serif;color:var(--violet)}
+.about p{line-height:1.85;color:var(--soft)}.sig{text-align:right;font:italic 25px "Playfair Display",serif;color:var(--violet)}
+.pill{display:inline-block;padding:4px 12px;border-radius:20px;color:#fff;background:#54258a;font-size:11px;text-transform:capitalize}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden;cursor:pointer;transition:.2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.card img{width:100%;height:170px;object-fit:cover;display:block}
+.card .ph{height:170px;display:grid;place-items:center;font-size:40px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.4);background:linear-gradient(rgba(37,17,63,.25),rgba(37,17,63,.25)),url("sunsettree.jpg") center/cover no-repeat,linear-gradient(135deg,#9d69bd,#f2b6cf)}
+.card .b{padding:14px}.card h3{margin:8px 0 6px;font:600 18px "Playfair Display",serif;overflow-wrap:anywhere}
+.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.6;overflow-wrap:anywhere}.meta{color:var(--muted);font-size:12px;margin-top:8px}
+.empty{color:var(--muted);font-style:italic;padding:10px 0}
+.studio{border:2px dashed var(--violet)}.studio label{display:block;margin:12px 0 5px;font-size:13px;font-weight:600;color:var(--violet)}
+input[type=text],textarea,select{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);font:15px "DM Sans",sans-serif}
+textarea{min-height:200px;line-height:1.7;resize:vertical}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.tab{padding:7px 14px;border-radius:20px;border:1px solid var(--violet);background:none;color:var(--violet);cursor:pointer;font:600 13px "DM Sans",sans-serif}
+.tab.on{background:#54258a;color:#fff;border-color:#54258a}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.thumbs img{width:64px;height:64px;object-fit:cover;border-radius:8px}
+.status{margin-left:12px;font-size:13px;color:var(--muted)}
+.modal{position:fixed;inset:0;z-index:20;background:rgba(20,8,36,.7);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:5vh 4%}
+.modal.open{display:flex}
+.sheet{position:relative;width:min(760px,100%);background:var(--paper);border-radius:20px;padding:30px;box-shadow:var(--shadow)}
+.sheet h2{font-size:30px;overflow-wrap:anywhere}.sheet .body{white-space:pre-wrap;line-height:1.9;color:var(--soft);font-size:17px;overflow-wrap:anywhere}
+.sheet .photos img{width:100%;border-radius:12px;margin-top:14px;display:block}
+.close{position:absolute;top:12px;right:16px;border:0;background:none;font-size:28px;color:var(--violet);cursor:pointer}
+.del{margin-top:20px;border:1px solid #b3261e;color:#b3261e;background:none;border-radius:20px;padding:7px 16px;cursor:pointer;font:600 13px "DM Sans",sans-serif}
+footer{padding:28px 5%;text-align:center;color:#fff;background:var(--deep);font-size:13px}footer span{color:#e6a8df}
+@media(max-width:850px){.row{grid-template-columns:1fr}.nav-links{gap:12px;font-size:12px}}
+@media(max-width:700px){.site-header{top:10px;padding:10px 14px;min-height:60px}.brand-name{font-size:15px}.brand-tag{font-size:8px}.menu-button{display:block}
+.nav-links{display:none;position:absolute;top:68px;left:0;right:0;padding:18px;border-radius:14px;flex-direction:column;align-items:stretch;gap:16px;background:var(--hdr);box-shadow:var(--shadow)}.nav-links.open{display:flex}
+.hero{padding:145px 7% 70px;min-height:500px}.panel{padding:18px}.sheet{padding:22px}}
+
+/* ---- polish ---- */
+.site-header{position:fixed;top:calc(14px + env(safe-area-inset-top,0px))}
+.nav-links a{position:relative;padding:4px 0;font-weight:500}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:linear-gradient(90deg,#8c4bc0,#e6a8df);transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.hero{min-height:660px;position:relative}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:140px;background:linear-gradient(transparent,var(--bg));pointer-events:none}
+.hero-content{position:relative;z-index:1;animation:rise .9s ease both}
+.eyebrow{font:500 13px/1 "DM Sans",sans-serif;letter-spacing:5px;text-transform:uppercase;opacity:.92}
+h1{letter-spacing:.5px;text-shadow:0 4px 30px rgba(0,0,0,.35)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.button.light{background:#fff;color:#54258a;border-color:#fff}
+.button.light:hover{background:transparent;color:#fff}
+.wrap{margin-top:-80px}
+.panel{border-radius:24px;padding:32px;backdrop-filter:blur(6px)}
+h2{display:flex;align-items:center;gap:14px;font-size:28px}
+h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.sheet h2::after{display:none}
+.card{border-radius:18px;box-shadow:0 2px 10px rgba(54,24,83,.06)}
+.card img,.card .ph{transition:transform .5s ease}
+.card:hover img,.card:hover .ph{transform:scale(1.06)}
+.card .b{padding:18px;background:var(--paper);position:relative}
+.pill{background:linear-gradient(135deg,#6a2fb0,#b05fc9);letter-spacing:.5px}
+#latestBox .card{flex-direction:row}
+#latestBox .card img,#latestBox .card .ph{width:42%;height:auto;min-height:230px;flex:none}
+#latestBox .card .b{display:flex;flex-direction:column;justify-content:center}
+.modal{backdrop-filter:blur(6px)}
+.sheet{border-radius:24px}
+.sheet .body{font-size:18px;line-height:2}
+footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media(max-width:700px){#latestBox .card{flex-direction:column}#latestBox .card img,#latestBox .card .ph{width:100%;height:190px;min-height:0}.hero{min-height:600px}.panel{padding:20px}.wrap{margin-top:-60px}h2{font-size:23px}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero-content{animation:none}.card:hover img,.card:hover .ph{transform:none}}
+.links{display:flex;flex-wrap:wrap;gap:12px}
+.links a{display:inline-flex;align-items:center;gap:10px;padding:11px 20px;border-radius:30px;border:1px solid var(--line);background:var(--paper);color:var(--violet);font-weight:600;font-size:14px;transition:.2s}
+.links a:hover{border-color:var(--violet);transform:translateY(-2px);box-shadow:var(--shadow)}
+.ic{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none;color:#fff;font-size:14px}
+.ic svg{width:18px;height:18px}
+.about .me{width:112px;height:112px;border-radius:50%;object-fit:cover;border:3px solid var(--line);box-shadow:var(--shadow);margin-bottom:14px}
+.about .nm{margin:0;font:600 24px "Playfair Display",serif;color:var(--violet)}.about .tg{margin:4px 0 14px;color:var(--muted);font-size:14px;letter-spacing:.5px}
+.about .quote{border-left:3px solid var(--violet);padding:4px 14px;margin:16px 0;font:italic 18px/1.6 "Playfair Display",serif;color:var(--violet)}
+.facts{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:9px;font-size:14px;color:var(--soft)}.facts b{color:var(--violet);margin-right:6px}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#home"><span class="brand-flower">✿</span><span><span class="brand-name">Violet Cherry Blossom</span><span class="brand-tag">MYYAMPR</span></span></a>
+  <button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
+  <nav class="nav-links" id="navLinks">
+    <a href="#home">Home</a><a href="#about">About Me</a><a href="#novel">My Novel</a><a href="#stories">People I’ve Met</a><a href="#thoughts">Thoughts</a><a href="#albums">Albums</a><a href="#contact" id="navContact">Contact</a>
+  </nav>
+</header>
+<main>
+  <section class="hero" id="home"><div class="hero-content">
+    <p class="eyebrow">Welcome to</p><h1>Violet Cherry Blossom</h1>
+    <p class="hero-subtitle">Stories, memories and unfinished thoughts.</p>
+    <div class="hero-actions"><a class="button light" href="#novel">Read My Novel <span>→</span></a><a class="button" href="#about">About Me</a></div>
+  </div></section>
+
+  <div class="wrap">
+    <div class="panel studio" id="studio" hidden>
+      <h2>✿ Studio — add something new</h2>
+      <div class="tabs" id="tabs"></div>
+      <label for="title">Title</label><input type="text" id="title" placeholder="Title">
+      <label for="body" id="bodyLabel">Write here</label><textarea id="body"></textarea>
+      <label for="files">Photos (optional, you can pick many)</label>
+      <input type="file" id="files" accept="image/*" multiple><div class="thumbs" id="thumbs"></div>
+      <p style="margin-top:18px"><button class="button solid" id="publish">Publish</button><span class="status" id="status"></span></p>
+    </div>
+
+    <div class="row">
+      <section class="panel" id="latest"><h2>Latest Writing</h2><div id="latestBox" class="empty">Loading…</div></section>
+      <section class="panel about" id="about"><h2>About Me</h2>
+        <p>Hi! I’m MYYAMPR — a dreamer and a writer. Through Violet Cherry Blossom, I share my stories, thoughts and little pieces of life.</p>
+        <div class="sig">— MYYAMPR ✿</div></section>
+    </div>
+
+    <section class="panel" id="novel" style="margin-top:20px"><h2>My Novel — chapters so far</h2><div class="grid" id="g-chapter"></div></section>
+    <section class="panel" id="stories"><h2>People I’ve Met</h2><div class="grid" id="g-story"></div></section>
+    <section class="panel" id="thoughts"><h2>Thoughts &amp; Notes</h2><div class="grid" id="g-thought"></div></section>
+    <section class="panel" id="albums"><h2>Photo Albums</h2><div class="grid" id="g-album"></div></section>
+    <section class="panel" id="contact" hidden><h2>Let’s Connect</h2><p style="margin:0 0 18px;color:var(--soft);line-height:1.8">Find me here, or write to me anytime.</p><div class="links" id="links"></div></section>
+  </div>
+</main>
+<footer>© 2026 Violet Cherry Blossom &nbsp;|&nbsp; Made with <span>♥</span> by MYYAMPR</footer>
+
+<div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+
+<script src="about.js"></script>
+<script src="links.js"></script>
+<script src="chapters.js"></script>
+<script>
+const TYPES={chapter:{n:"Novel chapter",i:"✒",l:"Chapter text"},story:{n:"Person I met",i:"▤",l:"Your story"},thought:{n:"Thought",i:"☁",l:"Your thought"},album:{n:"Photo album",i:"❀",l:"Album description"}};
+const $=id=>document.getElementById(id);
+let posts=(window.POSTS||[]).map((p,i)=>({id:"p"+i,...p,file:/\.(txt|md|js)$/i.test(String(p.body).trim())?String(p.body).trim():"",body:/\.(txt|md|js)$/i.test(String(p.body).trim())?"":p.body,images:p.images||[],created:new Date(p.date||p.created||0).getTime()+i})),db=null,assets=null,canEdit=false,cur="chapter",picked=[];
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fmt=t=>new Date(t).toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});
+const read=b=>Math.max(1,Math.round((b||"").trim().split(/\s+/).length/200));
+
+$("menuButton").onclick=()=>$("navLinks").classList.toggle("open");
+$("navLinks").onclick=()=>$("navLinks").classList.remove("open");
+
+function card(p){
+  const img=p.images&&p.images[0]?`<img loading="lazy" src="${esc(p.images[0])}" alt="">`:`<div class="ph">${TYPES[p.type].i}</div>`;
+  const extra=p.type==="album"?`${(p.images||[]).length} photos`:(p.file?"chapter":read(p.body)+" min read");
+  return `<div class="card" data-id="${esc(p.id)}">${img}<div class="b"><span class="pill">${TYPES[p.type].n}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary||(p.file?"Open to read this chapter":(p.body||"").slice(0,110)+((p.body||"").length>110?"…":"")))}</p><div class="meta">${fmt(p.created)} · ${extra}</div></div></div>`;
+}
+function render(){
+  posts.sort((a,b)=>(b.created||0)-(a.created||0));
+  Object.keys(TYPES).forEach(t=>{
+    let list=posts.filter(p=>p.type===t);
+    if(t==="chapter")list=list.slice().sort((a,b)=>a.created-b.created);
+    $("g-"+t).innerHTML=list.length?list.map(card).join(""):`<div class="empty">Nothing here yet${canEdit?" — add your first from the Studio above.":"."}</div>`;
+  });
+  const l=posts[0];
+  $("latestBox").className="";
+  $("latestBox").innerHTML=l?card(l):`<div class="empty">New writing will appear here soon.</div>`;
+}
+document.addEventListener("click",e=>{
+  const c=e.target.closest(".card");if(c)open(c.dataset.id);
+  if(e.target===$("modal")||e.target.classList.contains("close"))$("modal").classList.remove("open");
+});
+function open(id){
+  const p=posts.find(x=>x.id===id);if(!p)return;
+  $("sheet").innerHTML=`<button class="close" aria-label="Close">×</button><span class="pill">${TYPES[p.type].n}</span><h2 style="margin-top:12px">${esc(p.title)}</h2><div class="meta" style="margin:-8px 0 16px">${fmt(p.created)}</div><div class="body" id="bd">${p.file?"Loading…":esc(p.body)}</div><div class="photos">${(p.images||[]).map(u=>`<img loading="lazy" src="${esc(u)}" alt="">`).join("")}</div>${canEdit?`<button class="del" data-del="${esc(p.id)}">Delete this</button>`:""}`;
+  $("modal").classList.add("open");
+  if(p.file&&/\.js$/i.test(p.file)){window.CHAPTER_TEXT=null;const s=document.createElement("script");s.src=p.file;s.onload=()=>{$("bd").textContent=window.CHAPTER_TEXT||"This chapter file is empty.";window.CHAPTER_TEXT=null};s.onerror=()=>{$("bd").textContent="Could not find "+p.file+" in the folder."};document.head.appendChild(s)}else if(p.file)fetch(p.file).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{$("bd").textContent=t}).catch(()=>{$("bd").innerHTML='<iframe src="'+esc(p.file)+'" style="width:100%;height:70vh;border:0;border-radius:12px;background:#fff"></iframe>'});
+}
+$("sheet").addEventListener("click",async e=>{
+  const id=e.target.dataset&&e.target.dataset.del;if(!id||!confirm("Delete this permanently?"))return;
+  try{await db.collection("posts").doc(id).delete();$("modal").classList.remove("open")}catch(err){alert("Could not delete: "+(err.message||err.code))}
+});
+
+function tabs(){
+  $("tabs").innerHTML=Object.keys(TYPES).map(t=>`<button class="tab${t===cur?" on":""}" data-t="${t}">${TYPES[t].n}</button>`).join("");
+  $("bodyLabel").textContent=TYPES[cur].l;
+}
+$("tabs").onclick=e=>{if(e.target.dataset.t){cur=e.target.dataset.t;tabs()}};
+$("files").onchange=e=>{
+  picked=[...e.target.files];
+  $("thumbs").innerHTML=picked.map(f=>`<img alt="" src="${URL.createObjectURL(f)}">`).join("");
+};
+$("publish").onclick=async()=>{
+  const title=$("title").value.trim(),body=$("body").value;
+  if(!title){$("status").textContent="Please add a title.";return}
+  if(cur==="album"&&!picked.length){$("status").textContent="Choose photos for the album.";return}
+  $("publish").disabled=true;
+  try{
+    const images=[];
+    for(let i=0;i<picked.length;i++){
+      $("status").textContent=`Uploading photo ${i+1} of ${picked.length}…`;
+      const r=await assets.upload(picked[i]);images.push(r.url);
+    }
+    $("status").textContent="Saving…";
+    await db.collection("posts").doc("p"+Date.now()).set({type:cur,title,body,images,created:Date.now()});
+    $("title").value="";$("body").value="";$("files").value="";$("thumbs").innerHTML="";picked=[];
+    $("status").textContent="Published ✿";
+  }catch(err){$("status").textContent="Failed: "+(err.message||err.code||err)}
+  $("publish").disabled=false;
+};
+
+render();tabs();
+
+(()=>{if(!("IntersectionObserver" in window))return;const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll(".panel").forEach(p=>{p.classList.add("reveal");io.observe(p)})})();
+(()=>{const S=(bg,g)=>({bg,svg:`<svg viewBox="0 0 24 24" aria-hidden="true">${g}</svg>`});
+const st='fill="none" stroke="#fff" stroke-width="2"';
+const IC={
+gmail:S("#EA4335",`<rect x="3" y="5.5" width="18" height="13" rx="2" ${st}/><path d="M3.5 7l8.5 6.5L20.5 7" ${st} stroke-linejoin="round"/>`),
+instagram:S("linear-gradient(45deg,#f09433,#dc2743,#bc1888)",`<rect x="3.5" y="3.5" width="17" height="17" rx="5" ${st}/><circle cx="12" cy="12" r="4" ${st}/><circle cx="17.2" cy="6.8" r="1.2" fill="#fff"/>`),
+facebook:S("#1877F2",`<path d="M13.5 21v-7.5h2.6l.5-3h-3.1V8.7c0-.9.3-1.5 1.6-1.5h1.6V4.5c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.4-4 4.1v2H7.5v3h2.8V21z" fill="#fff"/>`),
+youtube:S("#FF0000",`<rect x="3" y="6.5" width="18" height="11" rx="3.2" fill="#fff"/><path d="M10 9.5v5l4.5-2.5z" fill="#FF0000"/>`),
+x:S("#111",`<path d="M5.5 5.5l13 13M18.5 5.5l-13 13" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>`),
+whatsapp:S("#25D366",`<path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.3-1.1A8.5 8.5 0 1 0 12 3.5z" ${st} stroke-linejoin="round"/><path d="M9 8.5c-.3 2.2 2.7 5.8 5.5 6.3.8.1 1.6-.5 1.6-1.2l-1.8-1-.9.7c-.9-.4-1.7-1.2-2.1-2.1l.7-.9-1-1.8c-.6 0-1.9.4-2 1.2z" fill="#fff"/>`),
+telegram:S("#229ED9",`<path d="M20.8 4.2L3.4 11l4.9 1.8 1.8 5.5 2.6-3.2 4.6 3.4z" fill="#fff"/>`),
+linkedin:S("#0A66C2",`<rect x="4.5" y="9.5" width="3" height="10" fill="#fff"/><circle cx="6" cy="6" r="1.8" fill="#fff"/><path d="M10.5 9.5h2.9v1.4c.5-.9 1.6-1.6 3.1-1.6 3 0 3.5 2 3.5 4.4v5.8h-3v-5.1c0-1.2 0-2.6-1.6-2.6s-1.9 1.2-1.9 2.5v5.2h-3z" fill="#fff"/>`)};
+const key=n=>{n=n.toLowerCase();if(/gmail|mail/.test(n))return"gmail";if(/(^|\W)x(\W|$)|twitter/.test(n))return"x";return Object.keys(IC).find(k=>n.includes(k))};
+const L=(window.LINKS||[]).filter(l=>l&&l.url&&!/YOUR/i.test(l.url));
+if(!L.length){const n=document.getElementById("navContact");if(n)n.remove();return}
+document.getElementById("links").innerHTML=L.map(l=>{const k=key(l.name),i=k&&IC[k],m=/^mailto:/i.test(l.url);
+return `<a href="${esc(l.url)}"${m?"":' target="_blank" rel="noopener"'}><span class="ic" style="background:${i?i.bg:"#54258a"}">${i?i.svg:"✿"}</span>${esc(l.name)}</a>`}).join("");
+document.getElementById("contact").hidden=false})();
+(()=>{const A=window.ABOUT;if(!A)return;const bad=s=>!s||/YOUR/i.test(s);
+let o="<h2>About Me</h2>";
+if(!bad(A.photo))o+=`<img class="me" src="${esc(A.photo)}" alt="" onerror="this.remove()">`;
+if(!bad(A.name))o+=`<h3 class="nm">${esc(A.name)}</h3>`;
+if(!bad(A.tagline))o+=`<div class="tg">${esc(A.tagline)}</div>`;
+const fm=t=>esc(t).replace(/\*([^*]+)\*/g,"<em>$1</em>"),B=(A.bio||[]).filter(t=>!bad(t)),N=3;
+B.slice(0,N).forEach(t=>o+=`<p>${fm(t)}</p>`);
+if(B.length>N)o+=`<div id="aboutMore" hidden>${B.slice(N).map(t=>`<p>${fm(t)}</p>`).join("")}</div><button class="button solid" id="aboutBtn" type="button" style="margin-top:6px">Read more ↓</button>`;
+if(!bad(A.quote))o+=`<div class="quote">${esc(A.quote)}</div>`;
+const F=(A.facts||[]).filter(f=>f&&!bad(f.value));
+if(F.length)o+=`<ul class="facts">${F.map(f=>`<li><b>${esc(f.label)}:</b>${esc(f.value)}</li>`).join("")}</ul>`;
+if(!bad(A.name))o+=`<div class="sig">— ${esc(A.name)} ✿</div>`;
+document.getElementById("about").innerHTML=o;
+const bt=document.getElementById("aboutBtn");if(bt)bt.onclick=()=>{const m=document.getElementById("aboutMore");m.hidden=!m.hidden;bt.textContent=m.hidden?"Read more ↓":"Show less ↑"}})();
+</script>
+</body>
+</html>
