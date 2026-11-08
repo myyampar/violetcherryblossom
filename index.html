@@ -138,9 +138,9 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
 
 /* ---- Modal Back to Top Button ---- */
 .modal-top-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
+    position: absolute; /* ഇവിടെയാണ് fixed-ന് പകരം absolute നൽകേണ്ടത് */
+    bottom: 20px;
+    right: 20px;
     background: var(--violet);
     color: #fff;
     width: 45px;
@@ -158,6 +158,10 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
     transition: transform 0.3s, background 0.3s, opacity 0.3s;
     opacity: 0;
     pointer-events: none;
+}
+.modal-top-btn:hover {
+    transform: scale(1.1);
+    background: #7a3fb8;
 }
 .modal-top-btn:hover {
     transform: scale(1.1);
@@ -432,7 +436,8 @@ window.addEventListener("scroll", () => {
 document.getElementById('modal').addEventListener('scroll', function() {
     const topBtn = document.getElementById('modalTopBtn');
     if (topBtn) {
-        if (this.scrollTop > 100) {
+        // 150 പിക്സൽ താഴേക്ക് സ്ക്രോൾ ചെയ്താൽ ബട്ടൺ കാണിക്കും
+        if (this.scrollTop > 150) {
             topBtn.style.opacity = "1";
             topBtn.style.pointerEvents = "auto";
         } else {
