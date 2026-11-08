@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+    body.modal-open .back-to-top {
+    display: none !important;
 :root{--violet:#54258a;--deep:#25113f;--paper:#fffaff;--ink:#29163e;--muted:#705d7d;--line:#e4d1f0;--bg:#f4eafa;--card:rgba(255,250,255,.96);--shadow:0 12px 35px rgba(54,24,83,.12);--hdr:rgba(255,245,255,.9);--soft:#574365;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--violet:#c9a2f0;--deep:#150a26;--paper:#241538;--ink:#f1e6fa;--muted:#b9a5c9;--line:#43295f;--bg:#1a0d2b;--card:rgba(36,21,56,.96);--hdr:rgba(36,21,56,.9);--soft:#cdbbdc}}
 :root[data-theme="dark"]{color-scheme:dark;--violet:#c9a2f0;--deep:#150a26;--paper:#241538;--ink:#f1e6fa;--muted:#b9a5c9;--line:#43295f;--bg:#1a0d2b;--card:rgba(36,21,56,.96);--hdr:rgba(36,21,56,.9);--soft:#cdbbdc}
@@ -301,6 +303,7 @@ function open(id){
   $("sheet").innerHTML=`<button class="close" aria-label="Close">×</button><span class="pill">${esc(pillText)}</span><h2 style="margin-top:12px">${esc(p.title)}</h2><div class="meta" style="margin:-8px 0 16px">${fmt(p.created)}</div><div class="body" id="bd">${p.file?"Loading…":esc(p.body)}</div><div class="photos">${(p.images||[]).map(u=>`<img loading="lazy" src="${esc(u)}" alt="">`).join("")}</div>${shareBtn}${canEdit?`<button class="del" data-del="${esc(p.id)}">Delete this</button>`:""}
   <button class="modal-top-btn" id="modalTopBtn" onclick="document.getElementById('modal').scrollTo({top: 0, behavior: 'smooth'}); document.getElementById('sheet').scrollTo({top: 0, behavior: 'smooth'});" title="Go to top">↑</button>`;
   $("modal").classList.add("open");
+  document.body.classList.add("modal-open");
   
   // Reset scroll position on modal open
   $("modal").scrollTop = 0;
