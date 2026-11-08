@@ -108,102 +108,43 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
 .facts{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:9px;font-size:14px;color:var(--soft)}.facts b{color:var(--violet);margin-right:6px}
 
 /* ---- Album & Lightbox CSS ---- */
-#g-album {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-}
-.gallery-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-.gallery-img:hover {
-    transform: scale(1.05);
-}
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center;
-}
-.lightbox-content {
-    max-width: 85%;
-    max-height: 85%;
-    border-radius: 5px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.2);
-    animation: zoomIn 0.3s ease;
-}
-@keyframes zoomIn {
-    from {transform: scale(0.9); opacity: 0;}
-    to {transform: scale(1); opacity: 1;}
-}
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1010;
-}
+#g-album { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+.gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform 0.3s ease; }
+.gallery-img:hover { transform: scale(1.05); }
+.lightbox { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; }
+.lightbox-content { max-width: 85%; max-height: 85%; border-radius: 5px; box-shadow: 0 0 20px rgba(255,255,255,0.2); animation: zoomIn 0.3s ease; }
+@keyframes zoomIn { from {transform: scale(0.9); opacity: 0;} to {transform: scale(1); opacity: 1;} }
+.close-btn { position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 1010; }
+.nav-btn { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 30px; transition: 0.3s ease; border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0, 0, 0, 0.3); border: none; z-index: 1010; }
+.nav-btn:hover { background-color: rgba(84, 37, 138, 0.9); }
+.prev { left: 20px; border-radius: 3px 0 0 3px; }
+.next { right: 20px; border-radius: 0 3px 3px 0; }
+@media(max-width: 700px) { .nav-btn { font-size: 20px; padding: 10px; } .prev { left: 10px; } .next { right: 10px; } .lightbox-content { max-width: 95%; max-height: 80%; } }
 
-/* Lightbox Navigation Buttons */
-.nav-btn {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
-    transition: 0.3s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    background-color: rgba(0, 0, 0, 0.3);
-    border: none;
-    z-index: 1010;
-}
-.nav-btn:hover {
-    background-color: rgba(84, 37, 138, 0.9);
-}
-.prev {
-    left: 20px;
-    border-radius: 3px 0 0 3px;
-}
-.next {
-    right: 20px;
-    border-radius: 0 3px 3px 0;
-}
-
-@media(max-width: 700px) {
-    .nav-btn { font-size: 20px; padding: 10px; }
-    .prev { left: 10px; }
-    .next { right: 10px; }
-    .lightbox-content { max-width: 95%; max-height: 80%; }
-}
+/* ---- New Features CSS ---- */
+.theme-toggle { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--violet); padding: 5px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
+.theme-toggle:hover { transform: rotate(20deg); }
+.back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--violet); color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; text-decoration: none; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 100; box-shadow: var(--shadow); transform: translateY(20px); }
+.back-to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.back-to-top:hover { background: #7a3fb8; }
+.share-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; padding: 8px 16px; background: var(--bg); border: 1px solid var(--line); border-radius: 20px; color: var(--violet); cursor: pointer; font-size: 14px; font-weight: 600; transition: 0.2s; }
+.share-btn:hover { background: var(--line); }
 </style>
 </head>
 <body>
 <header class="site-header">
   <a class="brand" href="#home"><span class="brand-flower">✿</span><span><span class="brand-name">Violet Cherry Blossom</span><span class="brand-tag">MYYAMPR</span></span></a>
+  
+  <!-- Mobile Menu Button -->
   <button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
+  
   <nav class="nav-links" id="navLinks">
     <a href="#home">Home</a><a href="#about">About Me</a><a href="#novel">My Novel</a><a href="#stories">People I’ve Met</a><a href="#thoughts">Thoughts</a><a href="#albums">Albums</a><a href="#contact" id="navContact">Contact</a>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">🌙</button>
   </nav>
 </header>
+
 <main>
   <section class="hero" id="home"><div class="hero-content">
     <p class="eyebrow">Welcome to</p><h1>Violet Cherry Blossom</h1>
@@ -242,13 +183,15 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
     <section class="panel" id="contact" hidden><h2>Let’s Connect</h2><p style="margin:0 0 18px;color:var(--soft);line-height:1.8">Find me here, or write to me anytime.</p><div class="links" id="links"></div></section>
   </div>
 </main>
+
 <footer>© 2026 Violet Cherry Blossom &nbsp;|&nbsp; Made with <span>♥</span> by MYYAMPR</footer>
+
+<!-- Back to Top Button -->
+<a href="#" class="back-to-top" id="backToTop" title="Go to top">↑</a>
 
 <!-- Lightbox (ഫോട്ടോ വലുതായി കാണാൻ) -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <span class="close-btn" onclick="closeLightbox(event)">&times;</span>
-    
-    <!-- പുതിയതായി ചേർത്ത Prev, Next ബട്ടണുകൾ -->
     <button class="nav-btn prev" onclick="changeImage(event, -1)">&#10094;</button>
     <img class="lightbox-content" id="lightbox-img" alt="Enlarged Photo">
     <button class="nav-btn next" onclick="changeImage(event, 1)">&#10095;</button>
@@ -279,10 +222,11 @@ function card(p){
   const extra=p.type==="album"?`${(p.images||[]).length} photos`:(p.file?"chapter":read(p.body)+" min read");
   return `<div class="card" data-id="${esc(p.id)}">${img}<div class="b"><span class="pill">${TYPES[p.type].n}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary||(p.file?"Open to read this chapter":(p.body||"").slice(0,110)+((p.body||"").length>110?"…":"")))}</p><div class="meta">${fmt(p.created)} · ${extra}</div></div></div>`;
 }
+
 function render(){
   posts.sort((a,b)=>(b.created||0)-(a.created||0));
   Object.keys(TYPES).forEach(t=>{
-    if(t === 'album') return; // Skip album as it's handled separately now
+    if(t === 'album') return; // Album handled separately
     let list=posts.filter(p=>p.type===t);
     if(t==="chapter")list=list.slice().sort((a,b)=>a.created-b.created);
     $("g-"+t).innerHTML=list.length?list.map(card).join(""):`<div class="empty">Nothing here yet${canEdit?" — add your first from the Studio above.":"."}</div>`;
@@ -291,16 +235,40 @@ function render(){
   $("latestBox").className="";
   $("latestBox").innerHTML=l?card(l):`<div class="empty">New writing will appear here soon.</div>`;
 }
+
 document.addEventListener("click",e=>{
   const c=e.target.closest(".card");if(c)open(c.dataset.id);
   if(e.target===$("modal")||e.target.classList.contains("close"))$("modal").classList.remove("open");
 });
+
 function open(id){
   const p=posts.find(x=>x.id===id);if(!p)return;
-  $("sheet").innerHTML=`<button class="close" aria-label="Close">×</button><span class="pill">${TYPES[p.type].n}</span><h2 style="margin-top:12px">${esc(p.title)}</h2><div class="meta" style="margin:-8px 0 16px">${fmt(p.created)}</div><div class="body" id="bd">${p.file?"Loading…":esc(p.body)}</div><div class="photos">${(p.images||[]).map(u=>`<img loading="lazy" src="${esc(u)}" alt="">`).join("")}</div>${canEdit?`<button class="del" data-del="${esc(p.id)}">Delete this</button>`:""}`;
+  
+  // Share Button Added Here
+  const shareBtn = `<button class="share-btn" onclick="sharePost('${esc(p.title)}')">🔗 Share this</button>`;
+
+  $("sheet").innerHTML=`<button class="close" aria-label="Close">×</button><span class="pill">${TYPES[p.type].n}</span><h2 style="margin-top:12px">${esc(p.title)}</h2><div class="meta" style="margin:-8px 0 16px">${fmt(p.created)}</div><div class="body" id="bd">${p.file?"Loading…":esc(p.body)}</div><div class="photos">${(p.images||[]).map(u=>`<img loading="lazy" src="${esc(u)}" alt="">`).join("")}</div>${shareBtn}${canEdit?`<button class="del" data-del="${esc(p.id)}">Delete this</button>`:""}`;
+  
   $("modal").classList.add("open");
   if(p.file&&/\.js$/i.test(p.file)){window.CHAPTER_TEXT=null;const s=document.createElement("script");s.src=p.file;s.onload=()=>{$("bd").textContent=window.CHAPTER_TEXT||"This chapter file is empty.";window.CHAPTER_TEXT=null};s.onerror=()=>{$("bd").textContent="Could not find "+p.file+" in the folder."};document.head.appendChild(s)}else if(p.file)fetch(p.file).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{$("bd").textContent=t}).catch(()=>{$("bd").innerHTML='<iframe src="'+esc(p.file)+'" style="width:100%;height:70vh;border:0;border-radius:12px;background:#fff"></iframe>'});
 }
+
+// Share function
+function sharePost(title) {
+    if (navigator.share) {
+        navigator.share({
+            title: title,
+            text: 'Check out this writing from Violet Cherry Blossom: ' + title,
+            url: window.location.href
+        }).catch(console.error);
+    } else {
+        // Fallback for browsers that don't support Web Share API
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('Link copied to clipboard!');
+        });
+    }
+}
+
 $("sheet").addEventListener("click",async e=>{
   const id=e.target.dataset&&e.target.dataset.del;if(!id||!confirm("Delete this permanently?"))return;
   try{await db.collection("posts").doc(id).delete();$("modal").classList.remove("open")}catch(err){alert("Could not delete: "+(err.message||err.code))}
@@ -336,7 +304,10 @@ $("publish").onclick=async()=>{
 
 render();tabs();
 
+// Reveal Animations
 (()=>{if(!("IntersectionObserver" in window))return;const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll(".panel").forEach(p=>{p.classList.add("reveal");io.observe(p)})})();
+
+// Links Render
 (()=>{const S=(bg,g)=>({bg,svg:`<svg viewBox="0 0 24 24" aria-hidden="true">${g}</svg>`});
 const st='fill="none" stroke="#fff" stroke-width="2"';
 const IC={
@@ -354,6 +325,8 @@ if(!L.length){const n=document.getElementById("navContact");if(n)n.remove();retu
 document.getElementById("links").innerHTML=L.map(l=>{const k=key(l.name),i=k&&IC[k],m=/^mailto:/i.test(l.url);
 return `<a href="${esc(l.url)}"${m?"":' target="_blank" rel="noopener"'}><span class="ic" style="background:${i?i.bg:"#54258a"}">${i?i.svg:"✿"}</span>${esc(l.name)}</a>`}).join("");
 document.getElementById("contact").hidden=false})();
+
+// About Render
 (()=>{const A=window.ABOUT;if(!A)return;const bad=s=>!s||/YOUR/i.test(s);
 let o="<h2>About Me</h2>";
 if(!bad(A.photo))o+=`<img class="me" src="${esc(A.photo)}" alt="" onerror="this.remove()">`;
@@ -368,6 +341,36 @@ if(F.length)o+=`<ul class="facts">${F.map(f=>`<li><b>${esc(f.label)}:</b>${esc(f
 if(!bad(A.name))o+=`<div class="sig">— ${esc(A.name)} ✿</div>`;
 document.getElementById("about").innerHTML=o;
 const bt=document.getElementById("aboutBtn");if(bt)bt.onclick=()=>{const m=document.getElementById("aboutMore");m.hidden=!m.hidden;bt.textContent=m.hidden?"Read more ↓":"Show less ↑"}})();
+
+// Dark / Light Mode Toggle
+const themeToggle = $("themeToggle");
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme) {
+    document.documentElement.setAttribute("data-theme", currentTheme);
+    themeToggle.textContent = currentTheme === "dark" ? "☀️" : "🌙";
+}
+themeToggle.addEventListener("click", () => {
+    let theme = document.documentElement.getAttribute("data-theme");
+    if (theme === "dark") {
+        document.documentElement.removeAttribute("data-theme");
+        localStorage.setItem("theme", "light");
+        themeToggle.textContent = "🌙";
+    } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+        themeToggle.textContent = "☀️";
+    }
+});
+
+// Back to Top Button Logic
+const backToTopBtn = $("backToTop");
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.add("show");
+    } else {
+        backToTopBtn.classList.remove("show");
+    }
+});
 </script>
 </body>
 </html>
