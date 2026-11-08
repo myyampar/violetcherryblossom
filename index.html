@@ -135,6 +135,34 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
 .comment-form input, .comment-form textarea { padding: 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-family: inherit; }
 .comment-form textarea { min-height: 120px; resize: vertical; }
 .form-status { margin-top: 10px; font-weight: bold; color: var(--violet); }
+
+/* ---- Modal Back to Top Button ---- */
+.modal-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--violet);
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    border: none;
+    transition: transform 0.3s, background 0.3s, opacity 0.3s;
+    opacity: 0;
+    pointer-events: none;
+}
+.modal-top-btn:hover {
+    transform: scale(1.1);
+    background: #7a3fb8;
+}
 </style>
 </head>
 <body>
@@ -192,7 +220,6 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
         <p style="color:var(--soft); margin-bottom:20px;">Share your thoughts with me!</p>
         
         <form action="https://api.web3forms.com/submit" method="POST" id="commentForm" class="comment-form">
-            <!-- Web3Forms Access Key -->
             <input type="hidden" name="access_key" value="16e56c4d-402d-49f6-8e6d-b701ccf680a5">
             <input type="hidden" name="subject" value="New Comment on Violet Cherry Blossom">
             
@@ -267,9 +294,14 @@ function open(id){
   const shareBtn = `<button class="share-btn" onclick="sharePost('${esc(p.title)}')">🔗 Share this</button>`;
   const pillText = p.displayTitle ? p.displayTitle : TYPES[p.type].n;
 
-  $("sheet").innerHTML=`<button class="close" aria-label="Close">×</button><span class="pill">${esc(pillText)}</span><h2 style="margin-top:12px">${esc(p.title)}</h2><div class="meta" style="margin:-8px 0 16px">${fmt(p.created)}</div><div class="body" id="bd">${p.file?"Loading…":esc(p.body)}</div><div class="photos">${(p.images||[]).map(u=>`<img loading="lazy" src="${esc(u)}" alt="">`).join("")}</div>${shareBtn}${canEdit?`<button class="del" data-del="${esc(p.id)}">Delete this</button>`:""}`;
+  $("sheet").innerHTML=`<button class="close" aria-label="Close">×</button><span class="pill">${esc(pillText)}</span><h2 style="margin-top:12px">${esc(p.title)}</h2><div class="meta" style="margin:-8px 0 16px">${fmt(p.created)}</div><div class="body" id="bd">${p.file?"Loading…":esc(p.body)}</div><div class="photos">${(p.images||[]).map(u=>`<img loading="lazy" src="${esc(u)}" alt="">`).join("")}</div>${shareBtn}${canEdit?`<button class="del" data-del="${esc(p.id)}">Delete this</button>`:""}
+  <button class="modal-top-btn" id="modalTopBtn" onclick="document.getElementById('modal').scrollTo({top: 0, behavior: 'smooth'}); document.getElementById('sheet').scrollTo({top: 0, behavior: 'smooth'});" title="Go to top">↑</button>`;
   $("modal").classList.add("open");
   
+  // Reset scroll position on modal open
+  $("modal").scrollTop = 0;
+  if($("modalTopBtn")) { $("modalTopBtn").style.opacity = "0"; $("modalTopBtn").style.pointerEvents = "none"; }
+
   if(p.file&&/\.js$/i.test(p.file)){
     window.CHAPTER_TEXT=null;
     const s=document.createElement("script");
@@ -386,13 +418,27 @@ themeToggle.addEventListener("click", () => {
     }
 });
 
-// Back to Top Button Logic
+// Back to Top Button Logic (Main Page)
 const backToTopBtn = $("backToTop");
 window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
         backToTopBtn.classList.add("show");
     } else {
         backToTopBtn.classList.remove("show");
+    }
+});
+
+// Back to Top Button Logic (Inside Modal/Chapter)
+document.getElementById('modal').addEventListener('scroll', function() {
+    const topBtn = document.getElementById('modalTopBtn');
+    if (topBtn) {
+        if (this.scrollTop > 100) {
+            topBtn.style.opacity = "1";
+            topBtn.style.pointerEvents = "auto";
+        } else {
+            topBtn.style.opacity = "0";
+            topBtn.style.pointerEvents = "none";
+        }
     }
 });
 
@@ -418,11 +464,11 @@ document.getElementById('commentForm').addEventListener('submit', async function
         
         if (result.success) {
             status.textContent = "Thank you! Your comment has been sent successfully.";
-            status.style.color = "#25D366"; // Green color
+            status.style.color = "#25D366";
             form.reset();
         } else {
             status.textContent = "Something went wrong. Please try again.";
-            status.style.color = "#b3261e"; // Red color
+            status.style.color = "#b3261e";
         }
     } catch (error) {
         status.textContent = "Error sending comment. Please check your internet connection.";
