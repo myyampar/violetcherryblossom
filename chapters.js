@@ -19,7 +19,7 @@ window.POSTS=[
   type: "chapter",
   title: "The last night we met",
   date: "2026-11-08",
-  images: [],
+  images: [chapter1image],
   body: "chapter1.js"
 },
 
@@ -35,14 +35,14 @@ window.POSTS=[
   type: "chapter",
   title: "first sunset",
   date: "2026-11-09",
-  images: [],
+  images: [chapter2image],
   body: "chapter2.js"
 },
 {
   type: "chapter",
-  title: "christmas night",
+  title: "christmas week",
   date: "2026-11-09",
-  images: [],
+  images: [chapter3image],
   body: "chapter3.js"
 },
 ];
