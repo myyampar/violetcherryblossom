@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Violet Cherry Blossom | MYYAMPR</title>
+<title>Violet Cherry Blossom | myy_ampar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -218,9 +218,32 @@ body.modal-open .back-to-top {
 
     <div class="row">
       <section class="panel" id="latest"><h2>Latest Writing</h2><div id="latestBox" class="empty">Loading…</div></section>
-      <section class="panel about" id="about"><h2>About Me</h2>
-        <p>Hi! I’m MYYAMPR — a dreamer and a writer. Through Violet Cherry Blossom, I share my stories, thoughts and little pieces of life.</p>
-        <div class="sig">— MYYAMPR ✿</div></section>
+      <!-- About Me Section (Updated) -->
+      <section class="panel about" id="about" style="display: flex; flex-direction: column; gap: 15px;">
+        <h2>About Me & This Space</h2>
+        
+        <div style="font-size: 28px; font-family: 'Playfair Display', serif; color: var(--violet); font-weight: 600; letter-spacing: 1px;">
+            myy_ampar
+        </div>
+    
+        <p style="font-size: 15px; color: var(--soft); margin-top: 5px;">
+            <strong>ഹായ്, ഞാൻ myy_ampar.</strong> ഒരു സ്വപ്നം കാണുന്നവനും, എഴുത്തുകാരനും, ഒപ്പം ഈ ലോകത്തിലെ ചെറിയ കാര്യങ്ങളിൽ അത്ഭുതം കാണുന്നവനുമാണ്.
+        </p>
+    
+        <p style="font-size: 15px; color: var(--soft);">
+            ഈ വെബ്സൈറ്റ് എന്റെ ഒരു ഡയറി പോലെയാണ്. ഇവിടെ ഞാൻ എന്റെ നോവൽ ചാപ്റ്ററുകൾ, ഓർമ്മകൾ, യാത്രകളിൽ കണ്ടുമുട്ടിയ ആളുകൾ, ഒപ്പം എന്റെ ഉള്ളിലെ ചിന്തകൾ എന്നിവ പങ്കുവെക്കുന്നു.
+        </p>
+    
+        <div style="border-left: 3px solid var(--violet); padding-left: 15px; margin: 10px 0; font-style: italic; color: var(--violet);">
+            "ചിലർ നമ്മുടെ ജീവിതത്തിലേക്ക് വരുന്നത് ഒരു പുസ്തകം പോലെയാണ്. അവർ വായിച്ചു തീർന്നാൽ പിന്നെ അടുത്ത പേജിലേക്ക് നമ്മൾ കടക്കണം. പക്ഷേ, ആ പുസ്തകം നൽകിയ അറിവ് എന്നും നമ്മോടൊപ്പം ഉണ്ടാകും."
+        </div>
+    
+        <p style="font-size: 15px; color: var(--soft);">
+            നിങ്ങൾക്ക് ഒരു കഥ പറയാനുണ്ടെങ്കിലോ, എന്റെ എഴുത്തുകളെക്കുറിച്ച് സംസാരിക്കണമെങ്കിലോ, താഴെയുള്ള കമന്റ് ബോക്സിൽ എഴുതാം. എന്നും സ്വാഗതം! ✿
+        </p>
+        
+        <div class="sig" style="margin-top: 10px;">— myy_ampar ✿</div>
+      </section>
     </div>
 
     <section class="panel" id="novel" style="margin-top:20px"><h2>My Novel — chapters so far</h2><div class="grid" id="g-chapter"></div></section>
@@ -324,7 +347,6 @@ function open(id){
   $("modal").classList.add("open");
   document.body.classList.add("modal-open");
   
-  // Reset scroll position on modal open
   $("modal").scrollTop = 0;
   if($("modalTopBtn")) { $("modalTopBtn").style.opacity = "0"; $("modalTopBtn").style.pointerEvents = "none"; }
 
@@ -408,21 +430,6 @@ if(!L.length){const n=document.getElementById("navContact");if(n)n.remove();retu
 document.getElementById("links").innerHTML=L.map(l=>{const k=key(l.name),i=k&&IC[k],m=/^mailto:/i.test(l.url);
 return `<a href="${esc(l.url)}"${m?"":' target="_blank" rel="noopener"'}><span class="ic" style="background:${i?i.bg:"#54258a"}">${i?i.svg:"✿"}</span>${esc(l.name)}</a>`}).join("");
 document.getElementById("contact").hidden=false})();
-
-(()=>{const A=window.ABOUT;if(!A)return;const bad=s=>!s||/YOUR/i.test(s);
-let o="<h2>About Me</h2>";
-if(!bad(A.photo))o+=`<img class="me" src="${esc(A.photo)}" alt="" onerror="this.remove()">`;
-if(!bad(A.name))o+=`<h3 class="nm">${esc(A.name)}</h3>`;
-if(!bad(A.tagline))o+=`<div class="tg">${esc(A.tagline)}</div>`;
-const fm=t=>esc(t).replace(/\*([^*]+)\*/g,"<em>$1</em>"),B=(A.bio||[]).filter(t=>!bad(t)),N=3;
-B.slice(0,N).forEach(t=>o+=`<p>${fm(t)}</p>`);
-if(B.length>N)o+=`<div id="aboutMore" hidden>${B.slice(N).map(t=>`<p>${fm(t)}</p>`).join("")}</div><button class="button solid" id="aboutBtn" type="button" style="margin-top:6px">Read more ↓</button>`;
-if(!bad(A.quote))o+=`<div class="quote">${esc(A.quote)}</div>`;
-const F=(A.facts||[]).filter(f=>f&&!bad(f.value));
-if(F.length)o+=`<ul class="facts">${F.map(f=>`<li><b>${esc(f.label)}:</b>${esc(f.value)}</li>`).join("")}</ul>`;
-if(!bad(A.name))o+=`<div class="sig">— ${esc(A.name)} ✿</div>`;
-document.getElementById("about").innerHTML=o;
-const bt=document.getElementById("aboutBtn");if(bt)bt.onclick=()=>{const m=document.getElementById("aboutMore");m.hidden=!m.hidden;bt.textContent=m.hidden?"Read more ↓":"Show less ↑"}})();
 
 // Dark / Light Mode Toggle
 const themeToggle = $("themeToggle");
