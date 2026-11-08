@@ -168,9 +168,25 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
 body.modal-open .back-to-top {
     display: none !important;
 }
+
+/* ---- Reading Progress Bar ---- */
+#readingProgress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(90deg, #8c4bc0, #e6a8df);
+    z-index: 9999;
+    transition: width 0.1s ease;
+    pointer-events: none;
+}
 </style>
 </head>
 <body>
+<!-- Reading Progress Bar -->
+<div id="readingProgress"></div>
+
 <header class="site-header">
   <a class="brand" href="#home"><span class="brand-flower">✿</span><span><span class="brand-name">Violet Cherry Blossom</span><span class="brand-tag">MYYAMPR</span></span></a>
   
@@ -293,7 +309,7 @@ document.addEventListener("click",e=>{
   const c=e.target.closest(".card");if(c)open(c.dataset.id);
   if(e.target===$("modal")||e.target.classList.contains("close")) {
       $("modal").classList.remove("open");
-      document.body.classList.remove("modal-open"); // ചാപ്റ്റർ അടയ്ക്കുമ്പോൾ ഹോം ബട്ടൺ തിരികെ കൊണ്ടുവരാൻ
+      document.body.classList.remove("modal-open");
   }
 });
 
@@ -306,7 +322,7 @@ function open(id){
   <button class="modal-top-btn" id="modalTopBtn" onclick="document.getElementById('modal').scrollTo({top: 0, behavior: 'smooth'}); document.getElementById('sheet').scrollTo({top: 0, behavior: 'smooth'});" title="Go to top">↑</button>`;
   
   $("modal").classList.add("open");
-  document.body.classList.add("modal-open"); // ചാപ്റ്റർ തുറക്കുമ്പോൾ ഹോം ബട്ടൺ മറയ്ക്കാൻ
+  document.body.classList.add("modal-open");
   
   // Reset scroll position on modal open
   $("modal").scrollTop = 0;
@@ -449,6 +465,29 @@ document.getElementById('modal').addEventListener('scroll', function() {
             topBtn.style.opacity = "0";
             topBtn.style.pointerEvents = "none";
         }
+    }
+});
+
+// Reading Progress Bar Logic
+document.getElementById('modal').addEventListener('scroll', function() {
+    const progressBar = document.getElementById('readingProgress');
+    if (progressBar) {
+        const scrollTop = this.scrollTop;
+        const scrollHeight = this.scrollHeight;
+        const clientHeight = this.clientHeight;
+        
+        if (scrollHeight > clientHeight) {
+            const scrollPercentage = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            progressBar.style.width = scrollPercentage + '%';
+        }
+    }
+});
+
+// Reset Reading Progress Bar when modal closes
+document.addEventListener("click", e => {
+    if(e.target === document.getElementById("modal") || e.target.classList.contains("close")) {
+        const progressBar = document.getElementById('readingProgress');
+        if (progressBar) progressBar.style.width = '0%';
     }
 });
 
