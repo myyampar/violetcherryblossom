@@ -1,9 +1,9 @@
 const albumPhotos = [
-    "blossom.jpg",
-    "sunsettree.jpg",
-    "chapter1image.jpg",
-    "chapter2image.jpg",
-    "chapter3image.jpg"
+    "park1.jpg",
+    "room1.jpg",
+    "coffie.jpg",
+    "xmas1.jpg",
+    "xmas2.jpg"
 ];
 
 const albumGrid = document.getElementById('g-album');
