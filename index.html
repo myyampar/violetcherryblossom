@@ -129,18 +129,22 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
 .back-to-top:hover { background: #7a3fb8; }
 .share-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 20px; padding: 8px 16px; background: var(--bg); border: 1px solid var(--line); border-radius: 20px; color: var(--violet); cursor: pointer; font-size: 14px; font-weight: 600; transition: 0.2s; }
 .share-btn:hover { background: var(--line); }
+
+/* ---- Comments Form CSS ---- */
+.comment-form { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
+.comment-form input, .comment-form textarea { padding: 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-family: inherit; }
+.comment-form textarea { min-height: 120px; resize: vertical; }
+.form-status { margin-top: 10px; font-weight: bold; color: var(--violet); }
 </style>
 </head>
 <body>
 <header class="site-header">
   <a class="brand" href="#home"><span class="brand-flower">✿</span><span><span class="brand-name">Violet Cherry Blossom</span><span class="brand-tag">MYYAMPR</span></span></a>
   
-  <!-- Mobile Menu Button -->
   <button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
   
   <nav class="nav-links" id="navLinks">
     <a href="#home">Home</a><a href="#about">About Me</a><a href="#novel">My Novel</a><a href="#stories">People I’ve Met</a><a href="#thoughts">Thoughts</a><a href="#albums">Albums</a><a href="#contact" id="navContact">Contact</a>
-    <!-- Theme Toggle Button -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">🌙</button>
   </nav>
 </header>
@@ -181,15 +185,31 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
     </section>
 
     <section class="panel" id="contact" hidden><h2>Let’s Connect</h2><p style="margin:0 0 18px;color:var(--soft);line-height:1.8">Find me here, or write to me anytime.</p><div class="links" id="links"></div></section>
+
+    <!-- Comments Section -->
+    <section class="panel" id="comments" style="margin-top:20px">
+        <h2>Leave a Comment</h2>
+        <p style="color:var(--soft); margin-bottom:20px;">Share your thoughts with me!</p>
+        
+        <form action="https://api.web3forms.com/submit" method="POST" id="commentForm" class="comment-form">
+            <!-- Web3Forms Access Key -->
+            <input type="hidden" name="access_key" value="16e56c4d-402d-49f6-8e6d-b701ccf680a5">
+            <input type="hidden" name="subject" value="New Comment on Violet Cherry Blossom">
+            
+            <input type="text" name="name" placeholder="Your Name" required>
+            <textarea name="comment" placeholder="Write your comment here..." required></textarea>
+            
+            <button type="submit" class="button solid" style="align-self:flex-start;">Post Comment</button>
+        </form>
+        <div id="formStatus" class="form-status"></div>
+    </section>
   </div>
 </main>
 
 <footer>© 2026 Violet Cherry Blossom &nbsp;|&nbsp; Made with <span>♥</span> by MYYAMPR</footer>
 
-<!-- Back to Top Button -->
 <a href="#" class="back-to-top" id="backToTop" title="Go to top">↑</a>
 
-<!-- Lightbox (ഫോട്ടോ വലുതായി കാണാൻ) -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <span class="close-btn" onclick="closeLightbox(event)">&times;</span>
     <button class="nav-btn prev" onclick="changeImage(event, -1)">&#10094;</button>
@@ -220,17 +240,14 @@ $("navLinks").onclick=()=>$("navLinks").classList.remove("open");
 function card(p){
   const img=p.images&&p.images[0]?`<img loading="lazy" src="${esc(p.images[0])}" alt="">`:`<div class="ph">${TYPES[p.type].i}</div>`;
   const extra=p.type==="album"?`${(p.images||[]).length} photos`:(p.file?"chapter":read(p.body)+" min read");
-  
-  // പുതിയ മാറ്റം: displayTitle ഉണ്ടെങ്കിൽ അത് എടുക്കും, ഇല്ലെങ്കിൽ പഴയത് പോലെ കാണിക്കും
   const pillText = p.displayTitle ? p.displayTitle : TYPES[p.type].n;
-
   return `<div class="card" data-id="${esc(p.id)}">${img}<div class="b"><span class="pill">${esc(pillText)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary||(p.file?"Open to read this chapter":(p.body||"").slice(0,110)+((p.body||"").length>110?"…":"")))}</p><div class="meta">${fmt(p.created)} · ${extra}</div></div></div>`;
 }
 
 function render(){
   posts.sort((a,b)=>(b.created||0)-(a.created||0));
   Object.keys(TYPES).forEach(t=>{
-    if(t === 'album') return; // Album handled separately
+    if(t === 'album') return; 
     let list=posts.filter(p=>p.type===t);
     if(t==="chapter")list=list.slice().sort((a,b)=>a.created-b.created);
     $("g-"+t).innerHTML=list.length?list.map(card).join(""):`<div class="empty">Nothing here yet${canEdit?" — add your first from the Studio above.":"."}</div>`;
@@ -247,11 +264,7 @@ document.addEventListener("click",e=>{
 
 function open(id){
   const p=posts.find(x=>x.id===id);if(!p)return;
-  
-  // Share Button Added Here
   const shareBtn = `<button class="share-btn" onclick="sharePost('${esc(p.title)}')">🔗 Share this</button>`;
-  
-  // പോപ്പ്-അപ്പിലും Chapter 1, Chapter 2 എന്ന് കാണിക്കാൻ ഈ വരി ചേർക്കുന്നു
   const pillText = p.displayTitle ? p.displayTitle : TYPES[p.type].n;
 
   $("sheet").innerHTML=`<button class="close" aria-label="Close">×</button><span class="pill">${esc(pillText)}</span><h2 style="margin-top:12px">${esc(p.title)}</h2><div class="meta" style="margin:-8px 0 16px">${fmt(p.created)}</div><div class="body" id="bd">${p.file?"Loading…":esc(p.body)}</div><div class="photos">${(p.images||[]).map(u=>`<img loading="lazy" src="${esc(u)}" alt="">`).join("")}</div>${shareBtn}${canEdit?`<button class="del" data-del="${esc(p.id)}">Delete this</button>`:""}`;
@@ -269,7 +282,6 @@ function open(id){
   }
 }
 
-// Share function
 function sharePost(title) {
     if (navigator.share) {
         navigator.share({
@@ -319,10 +331,8 @@ $("publish").onclick=async()=>{
 
 render();tabs();
 
-// Reveal Animations
 (()=>{if(!("IntersectionObserver" in window))return;const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.08});document.querySelectorAll(".panel").forEach(p=>{p.classList.add("reveal");io.observe(p)})})();
 
-// Links Render
 (()=>{const S=(bg,g)=>({bg,svg:`<svg viewBox="0 0 24 24" aria-hidden="true">${g}</svg>`});
 const st='fill="none" stroke="#fff" stroke-width="2"';
 const IC={
@@ -341,7 +351,6 @@ document.getElementById("links").innerHTML=L.map(l=>{const k=key(l.name),i=k&&IC
 return `<a href="${esc(l.url)}"${m?"":' target="_blank" rel="noopener"'}><span class="ic" style="background:${i?i.bg:"#54258a"}">${i?i.svg:"✿"}</span>${esc(l.name)}</a>`}).join("");
 document.getElementById("contact").hidden=false})();
 
-// About Render
 (()=>{const A=window.ABOUT;if(!A)return;const bad=s=>!s||/YOUR/i.test(s);
 let o="<h2>About Me</h2>";
 if(!bad(A.photo))o+=`<img class="me" src="${esc(A.photo)}" alt="" onerror="this.remove()">`;
@@ -385,6 +394,42 @@ window.addEventListener("scroll", () => {
     } else {
         backToTopBtn.classList.remove("show");
     }
+});
+
+// Comment Form Submission (Web3Forms)
+document.getElementById('commentForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const status = document.getElementById('formStatus');
+    const button = form.querySelector('button[type="submit"]');
+    
+    status.textContent = "Sending...";
+    status.style.color = "var(--violet)";
+    button.disabled = true;
+
+    const formData = new FormData(form);
+
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+        
+        if (result.success) {
+            status.textContent = "Thank you! Your comment has been sent successfully.";
+            status.style.color = "#25D366"; // Green color
+            form.reset();
+        } else {
+            status.textContent = "Something went wrong. Please try again.";
+            status.style.color = "#b3261e"; // Red color
+        }
+    } catch (error) {
+        status.textContent = "Error sending comment. Please check your internet connection.";
+        status.style.color = "#b3261e";
+    }
+    
+    button.disabled = false;
 });
 </script>
 </body>
