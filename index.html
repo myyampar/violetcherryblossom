@@ -107,19 +107,102 @@ footer{background:linear-gradient(135deg,#25113f,#54258a);padding:44px 5%}
 .about .quote{border-left:3px solid var(--violet);padding:4px 14px;margin:16px 0;font:italic 18px/1.6 "Playfair Display",serif;color:var(--violet)}
 .facts{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:9px;font-size:14px;color:var(--soft)}.facts b{color:var(--violet);margin-right:6px}
 
-/* ---- Album & Lightbox CSS ---- */
-#g-album { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
-.gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; transition: transform 0.3s ease; }
-.gallery-img:hover { transform: scale(1.05); }
-.lightbox { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); justify-content: center; align-items: center; }
-.lightbox-content { max-width: 85%; max-height: 85%; border-radius: 5px; box-shadow: 0 0 20px rgba(255,255,255,0.2); animation: zoomIn 0.3s ease; }
-@keyframes zoomIn { from {transform: scale(0.9); opacity: 0;} to {transform: scale(1); opacity: 1;} }
-.close-btn { position: absolute; top: 20px; right: 40px; color: white; font-size: 40px; font-weight: bold; cursor: pointer; z-index: 1010; }
-.nav-btn { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 30px; transition: 0.3s ease; border-radius: 0 3px 3px 0; user-select: none; background-color: rgba(0, 0, 0, 0.3); border: none; z-index: 1010; }
-.nav-btn:hover { background-color: rgba(84, 37, 138, 0.9); }
-.prev { left: 20px; border-radius: 3px 0 0 3px; }
-.next { right: 20px; border-radius: 0 3px 3px 0; }
-@media(max-width: 700px) { .nav-btn { font-size: 20px; padding: 10px; } .prev { left: 10px; } .next { right: 10px; } .lightbox-content { max-width: 95%; max-height: 80%; } }
+/* ---- Album & Lightbox CSS (Updated to Collage Style) ---- */
+#g-album { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    gap: 10px; 
+    padding: 10px 0;
+}
+
+.gallery-img { 
+    width: 100%; 
+    height: 150px; 
+    object-fit: cover; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    transition: transform 0.3s ease; 
+}
+
+.gallery-img:hover { 
+    transform: scale(1.05); 
+}
+
+.lightbox { 
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.9); 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.lightbox-content { 
+    max-width: 85%; 
+    max-height: 85%; 
+    border-radius: 5px; 
+    box-shadow: 0 0 20px rgba(255,255,255,0.2); 
+    animation: zoomIn 0.3s ease; 
+}
+
+@keyframes zoomIn { 
+    from {transform: scale(0.9); opacity: 0;} 
+    to {transform: scale(1); opacity: 1;} 
+}
+
+.close-btn { 
+    position: absolute; 
+    top: 20px; 
+    right: 40px; 
+    color: white; 
+    font-size: 40px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    z-index: 1010; 
+}
+
+.nav-btn { 
+    cursor: pointer; 
+    position: absolute; 
+    top: 50%; 
+    width: auto; 
+    padding: 16px; 
+    margin-top: -22px; 
+    color: white; 
+    font-weight: bold; 
+    font-size: 30px; 
+    transition: 0.3s ease; 
+    border-radius: 0 3px 3px 0; 
+    user-select: none; 
+    background-color: rgba(0, 0, 0, 0.3); 
+    border: none; 
+    z-index: 1010; 
+}
+
+.nav-btn:hover { 
+    background-color: rgba(84, 37, 138, 0.9); 
+}
+
+.prev { 
+    left: 20px; 
+    border-radius: 3px 0 0 3px; 
+}
+
+.next { 
+    right: 20px; 
+    border-radius: 0 3px 3px 0; 
+}
+
+@media(max-width: 700px) { 
+    .nav-btn { font-size: 20px; padding: 10px; } 
+    .prev { left: 10px; } 
+    .next { right: 10px; } 
+    .lightbox-content { max-width: 95%; max-height: 80%; } 
+}
 
 /* ---- New Features CSS ---- */
 .theme-toggle { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--violet); padding: 5px; display: flex; align-items: center; justify-content: center; transition: transform 0.3s; }
@@ -188,7 +271,7 @@ body.modal-open .back-to-top {
 <div id="readingProgress"></div>
 
 <header class="site-header">
-  <a class="brand" href="#home"><span class="brand-flower">✿</span><span><span class="brand-name">Violet Cherry Blossom</span><span class="brand-tag">myy_ampar</span></span></a>
+  <a class="brand" href="#home"><span class="brand-flower">✿</span><span><span class="brand-name">Violet Cherry Blossom</span><span class="brand-tag">MYYAMPR</span></span></a>
   
   <button class="menu-button" id="menuButton" aria-label="Open navigation">☰</button>
   
@@ -222,13 +305,22 @@ body.modal-open .back-to-top {
       <!-- About Me Section (Updated) -->
       <section class="panel about" id="about" style="display: flex; flex-direction: column; justify-content: center;">
         <h2>About Me & This Space</h2>
- <p style="font-size: 14px; color: var(--soft); margin-bottom: 10px;">
+        
+        <div style="font-size: 24px; font-family: 'Playfair Display', serif; color: var(--violet); font-weight: 600; letter-spacing: 1px; margin-bottom: 10px;">
+            myy_ampar
+        </div>
+
+        <p style="font-size: 14px; color: var(--soft); margin-bottom: 10px;">
             <strong>ഹായ്, ഞാൻ myy_ampar.</strong> ഒരു സ്വപ്നം കാണുന്നവനും, എഴുത്തുകാരനും, ഒപ്പം ഈ ലോകത്തിലെ ചെറിയ കാര്യങ്ങളിൽ അത്ഭുതം കാണുന്നവനുമാണ്.
         </p>
 
         <p style="font-size: 14px; color: var(--soft); margin-bottom: 15px;">
             ഈ വെബ്സൈറ്റ് എന്റെ ഒരു ഡയറി പോലെയാണ്. ഇവിടെ ഞാൻ എന്റെ നോവൽ ചാപ്റ്ററുകൾ, ഓർമ്മകൾ, യാത്രകളിൽ കണ്ടുമുട്ടിയ ആളുകൾ, ഒപ്പം എന്റെ ഉള്ളിലെ ചിന്തകൾ എന്നിവ പങ്കുവെക്കുന്നു.
         </p>
+
+        <div style="border-left: 3px solid var(--violet); padding-left: 12px; margin: 0 0 15px 0; font-style: italic; color: var(--violet); font-size: 14px;">
+            "ചിലർ നമ്മുടെ ജീവിതത്തിലേക്ക് വരുന്നത് ഒരു പുസ്തകം പോലെയാണ്. അവർ വായിച്ചു തീർന്നാൽ പിന്നെ അടുത്ത പേജിലേക്ക് നമ്മൾ കടക്കണം. പക്ഷേ, ആ പുസ്തകം നൽകിയ അറിവ് എന്നും നമ്മോടൊപ്പം ഉണ്ടാകും."
+        </div>
 
         <div class="sig" style="margin-top: auto; text-align: right; font-size: 20px;">— myy_ampar ✿</div>
       </section>
@@ -241,7 +333,8 @@ body.modal-open .back-to-top {
     <!-- Albums Section -->
     <section class="panel" id="albums" style="margin-top:20px">
         <h2>Photo Albums</h2>
-        <div id="g-album"></div>
+        <!-- 'grid' എന്ന ക്ലാസ് നൽകിയാൽ ചിത്രങ്ങൾ കൃത്യമായി അടുക്കിവരും -->
+        <div id="g-album" class="grid"></div> 
     </section>
 
     <section class="panel" id="contact" hidden><h2>Let’s Connect</h2><p style="margin:0 0 18px;color:var(--soft);line-height:1.8">Find me here, or write to me anytime.</p><div class="links" id="links"></div></section>
