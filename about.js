@@ -9,7 +9,7 @@ window.ABOUT={
   tagline: "Dreamer · Writer",
   photo: "YOUR_PHOTO.jpg",   // e.g. "profile.jpg" (put the picture in the same folder)
   bio: [
-    I’m MYYAMPR — a writer, a thinker and a dreamer. By day I work as a Team Leader in logistics and last-mile operations, where I enjoy turning many moving parts into something organised and dependable.
+    I’m myy_ampar — a writer, a thinker and a dreamer. By day I work as a Team Leader in logistics and last-mile operations, where I enjoy turning many moving parts into something organised and dependable.
 
 Outside work, my curiosity wanders: history, science, philosophy, space, cinema and the way people think. I’m always asking “why?”, and I write to explore the answers — stories about the people I meet, memories I want to keep and thoughts I haven’t finished yet.
 
