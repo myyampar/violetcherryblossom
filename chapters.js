@@ -33,10 +33,16 @@ window.POSTS=[
 
 {
   type: "chapter",
-  title: "Chapter 2",
+  title: "first sunset",
   date: "2026-11-09",
   images: [],
   body: "chapter2.js"
 },
-
+{
+  type: "chapter",
+  title: "christmas night",
+  date: "2026-11-09",
+  images: [],
+  body: "chapter2.js"
+},
 ];
