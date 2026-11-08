@@ -5,7 +5,7 @@
     Keep the quote marks and the commas.
 */
 window.ABOUT={
-  name: "MYYAMPR",
+  name: "myy_ampar",
   tagline: "Dreamer · Writer",
   photo: "YOUR_PHOTO.jpg",   // e.g. "profile.jpg" (put the picture in the same folder)
   bio: [
