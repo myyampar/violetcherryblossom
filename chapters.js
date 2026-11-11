@@ -17,7 +17,7 @@ window.POSTS = [
   },
     {
     type: "chapter",
-    title: "Chapter 4", // നിങ്ങളുടെ ചാപ്റ്ററിന്റെ പേര്
+    title: "New Year's Night", // നിങ്ങളുടെ ചാപ്റ്ററിന്റെ പേര്
     displayTitle: "Chapter 4",
     date: "2026-11-11", // ഇന്നത്തെ തീയതി
     images: ["chapter4image.jpg"], // ഇമേജ് ഉണ്ടെങ്കിൽ അതിന്റെ പേര്
